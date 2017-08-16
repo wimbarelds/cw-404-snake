@@ -62,7 +62,7 @@
                 }
                 if(typeof url !== "string"){
                     console.error("Invalid input, please provide the filename of the AI (as a string)");
-                    console.log("Example: vm.loadBot('test-bot.js');")
+                    console.log("Example: vm.loadBot('dist/bots/test-bot.js');")
                     return false;
                 }
 
@@ -76,7 +76,7 @@
                 this.highscores.show = false;
 
                 // Handler for when the worker says it's ready
-                const readyHandler = function(e) {
+                const readyHandler = (e) => {
                     if(e.data !== "ready") return;
                     this.aiWebWorker.removeEventListener('message', readyHandler);
                     
