@@ -45,7 +45,8 @@
                 result: {
                     name: '',
                     score: 0,
-                    history: []
+                    history: [],
+                    valid: false
                 },
                 show: false,
                 highscores: [],
@@ -59,7 +60,7 @@
             setResult: function(result){
                 this.result = result;
                 this.score = this.result.score;
-                this.resultIsHighscore = (this.highscores.length && this.score > this.highscores[this.highscores.length - 1].score);
+                this.resultIsHighscore = (this.result.valid && this.highscores.length && this.score > this.highscores[this.highscores.length - 1].score);
                 this.responseMessage = '';
             },
             submitScore: function(){

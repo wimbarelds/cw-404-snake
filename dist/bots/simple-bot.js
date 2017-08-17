@@ -236,12 +236,12 @@ function update (data){
     // If nothing has been found for too long, add artificial candies to lead snake to other candy
     if(lastCandyFound < Date.now() - 10000) {
         console.log('No candy found for too long, placing artificial candy');
-        candy.push({ x: 350, y: 300 });
-        candy.push({ x: 650, y: 300 });
-        candy.push({ x: 950, y: 100 });
-        candy.push({ x: 950, y: 500 });
-        candy.push({ x: 1250, y: 300 });
-        candy.push({ x: 1550, y: 300 });
+        candy.push({ x: 250, y: 300 });
+        candy.push({ x: 550, y: 300 });
+        candy.push({ x: 850, y: 100 });
+        candy.push({ x: 850, y: 500 });
+        candy.push({ x: 1150, y: 300 });
+        candy.push({ x: 1450, y: 300 });
         lastCandyFound = Date.now();
     }
 };

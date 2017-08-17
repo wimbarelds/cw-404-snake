@@ -42,7 +42,8 @@
                 this.highscores.setResult({
                     name: '',
                     score: game.score,
-                    history: game.gameHistory
+                    history: game.gameHistory,
+                    valid: (this.aiWebWorker === null)
                 });
                 this.highscores.open();
             },
