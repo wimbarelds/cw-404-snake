@@ -129,14 +129,10 @@
                 if(this.aiWebWorker === null) return;
                 this.aiWebWorker.postMessage('candy', location);
             },
-            handleUpdate(game) {
+            handleUpdate(updateData) {
                 this.aiWebWorker.postMessage({
                     type: 'update',
-                    data: {
-                        updateFrame: game.updateFrame - 1,
-                        direction: game.direction,
-                        frameDelay: game.frameDelay
-                    }
+                    data: updateData
                 });
 
             }
