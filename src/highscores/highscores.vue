@@ -50,17 +50,20 @@
                 },
                 show: false,
                 highscores: [],
-                resultIsHighscore: false,
                 responseStatus: true,
                 responseMessage: '',
                 name: ''
+            }
+        },
+        computed: {
+            resultIsHighscore() {
+                return (this.result.valid && this.highscores.length && this.score > this.highscores[this.highscores.length - 1].score);
             }
         },
         methods: {
             setResult: function(result){
                 this.result = result;
                 this.score = this.result.score;
-                this.resultIsHighscore = (this.result.valid && this.highscores.length && this.score > this.highscores[this.highscores.length - 1].score);
                 this.responseMessage = '';
             },
             submitScore: function(){
@@ -76,8 +79,6 @@
                         this.responseMessage = jsonResponse.message;
                         this.responseStatus = jsonResponse.success;
                         this.name = "";
-
-                        this.resultIsHighscore = (this.highscores.length && this.score > this.highscores[this.highscores.length - 1].score);
                     });
             },
             watchReplay: function(history){
@@ -94,7 +95,6 @@
                     .then((highscores) => {
                         this.highscores = highscores;
                         this.show = true;
-                        this.resultIsHighscore = (this.highscores.length && this.score > this.highscores[this.highscores.length - 1].score);
                     });
             }
         }
