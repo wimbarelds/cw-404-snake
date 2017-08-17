@@ -46,6 +46,10 @@
                     valid: (this.aiWebWorker === null)
                 });
                 this.highscores.open();
+                if(this.aiWebWorker !== null){
+                    this.aiWebWorker.terminate();
+                    this.aiWebWorker = null;
+                }
             },
             updateScore(game) {
                 this.currentScore = game.score;
