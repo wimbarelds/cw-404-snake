@@ -130,11 +130,11 @@
                 this.aiWebWorker.postMessage('candy', location);
             },
             handleUpdate(updateData) {
+                if(this.aiWebWorker === null) return;
                 this.aiWebWorker.postMessage({
                     type: 'update',
                     data: updateData
                 });
-
             }
         },
         components: {
