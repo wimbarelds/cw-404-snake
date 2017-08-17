@@ -9,7 +9,7 @@
         </div>
         <div class="body-container">
             <div class="game-container">
-                <game @gameover="gameover($event)" @score-change="updateScore($event)" @candy-placed="handleCandyPlaced()" @update="handleUpdate()"></game>
+                <game @gameover="gameover($event)" @score-change="updateScore($event)" @candy-placed="handleCandyPlaced($event)" @update="handleUpdate($event)"></game>
             </div>
         </div>
     </div>
