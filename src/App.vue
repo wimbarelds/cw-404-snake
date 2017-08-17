@@ -9,7 +9,7 @@
         </div>
         <div class="body-container">
             <div class="game-container">
-                <game @gameover="gameover($event)" @score-change="updateScore($event)"></game>
+                <game @gameover="gameover($event)" @score-change="updateScore($event)" @candy-placed="handleCandyPlaced()" @update="handleUpdate()"></game>
             </div>
         </div>
     </div>
@@ -124,6 +124,21 @@
                 });
 
                 return this.aiWebWorker;
+            },
+            handleCandyPlaced(location) {
+                if(this.aiWebWorker === null) return;
+                this.aiWebWorker.postMessage('candy', location);
+            },
+            handleUpdate(game) {
+                this.aiWebWorker.postMessage({
+                    type: 'update',
+                    data: {
+                        updateFrame: game.updateFrame - 1,
+                        direction: game.direction,
+                        frameDelay: game.frameDelay
+                    }
+                });
+
             }
         },
         components: {

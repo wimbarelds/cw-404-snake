@@ -170,10 +170,7 @@
 
                     this.candy.push({ x: location.x, y: location.y });
                     this.gameHistory.c.push({ u: this.updateFrame.toString(36), x: location.x.toString(36), y: location.y.toString(36) });
-                    if(this.aiWebWorker !== null) this.aiWebWorker.postMessage({
-                        type: 'candy',
-                        data: { x: location.x, y: location.y }
-                    });            
+                    this.$emit('candy-placed', { x: location.x, y: location.y });
                 }
             },
 
@@ -265,7 +262,6 @@
             // Update Gamestate
             update() {
                 // Execute update handlers before executing update
-                this.$emit('update', this);
                 this.updateListeners.forEach((callback) => callback());
 
                 // Move our snake
@@ -308,13 +304,11 @@
                 else {
                     let frameDelay = this.tickInterval;
                     this.updateTimeout = setTimeout(this.update.bind(this), frameDelay);
-                    if(this.aiWebWorker !== null) this.aiWebWorker.postMessage({
-                        type: 'update',
-                        data: {
-                            updateFrame: updateFrame - 1,
-                            direction: this.direction,
-                            frameDelay
-                        }
+                    
+                    this.$emit('update', {
+                        updateFrame: this.updateFrame - 1,
+                        direction: this.direction,
+                        frameDelay: frameDelay
                     });
                 }
 
