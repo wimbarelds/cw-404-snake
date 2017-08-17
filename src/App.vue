@@ -127,7 +127,10 @@
             },
             handleCandyPlaced(location) {
                 if(this.aiWebWorker === null) return;
-                this.aiWebWorker.postMessage('candy', location);
+                this.aiWebWorker.postMessage({
+                    type: 'candy',
+                    data: location
+                });
             },
             handleUpdate(updateData) {
                 if(this.aiWebWorker === null) return;
