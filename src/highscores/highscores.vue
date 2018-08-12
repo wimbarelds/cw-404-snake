@@ -69,7 +69,7 @@
             submitScore: function(){
                 this.result.name = this.name;
 
-                fetch('http://git.wimbarelds.nl/404server/highscores.php', {
+                fetch('https://git.wimbarelds.nl/404server/highscores.php', {
                     method: 'post',
                     body: JSON.stringify(this.result)
                 })
@@ -90,7 +90,7 @@
                 this.$emit('click-restart');
             },
             open: function(){
-                fetch('http://git.wimbarelds.nl/404server/highscores.php')
+                fetch('https://git.wimbarelds.nl/404server/highscores.php')
                     .then((response) => response.json())
                     .then((highscores) => {
                         this.highscores = highscores;
